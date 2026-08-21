@@ -1,140 +1,529 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أثر</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أثر | صدقة جارية</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f3ed;
-      color: #333;
-      text-align: center;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    h1 {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
+body {
+  margin: 0;
+  font-family: 'Amiri', serif;
+  background: #f6f4ed;
+  color: #30483b;
+}
 
-    .subtitle {
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 45px 18px;
+  text-align: center;
+}
 
-    .card {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
+.logo {
+  font-size: 58px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
 
-    #dhikr {
-      font-size: 25px;
-      line-height: 1.8;
-      margin-bottom: 25px;
-    }
+.subtitle {
+  font-size: 20px;
+  color: #718077;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
 
-    button {
-      border: none;
-      padding: 14px 25px;
-      margin: 7px;
-      border-radius: 12px;
-      font-size: 17px;
-      cursor: pointer;
-    }
+.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
 
-    .main {
-      background: #333;
-      color: white;
-    }
+.menu button {
+  border: none;
+  background: white;
+  color: #30483b;
+  border-radius: 22px;
+  padding: 25px 10px;
+  font-family: 'Amiri', serif;
+  font-size: 20px;
+  box-shadow: 0 7px 25px rgba(48,72,59,0.07);
+  cursor: pointer;
+  transition: 0.2s;
+}
 
-    .secondary {
-      background: #e8e5dc;
-      color: #333;
-    }
+.menu button:active {
+  transform: scale(0.96);
+}
 
-    footer {
-      margin-top: 35px;
-      font-size: 14px;
-      opacity: 0.7;
-    }
-  </style>
+.icon {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.section {
+  display: none;
+  margin-top: 25px;
+  background: white;
+  padding: 30px 20px;
+  border-radius: 25px;
+  box-shadow: 0 8px 30px rgba(48,72,59,0.08);
+}
+
+.section.active {
+  display: block;
+}
+
+.section h2 {
+  margin-top: 0;
+  font-size: 29px;
+}
+
+.text {
+  font-size: 25px;
+  line-height: 2;
+  margin: 25px 0;
+}
+
+button.action {
+  border: none;
+  background: #5c7768;
+  color: white;
+  padding: 13px 24px;
+  border-radius: 15px;
+  font-family: 'Amiri', serif;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button.back {
+  background: #e7ebe5;
+  color: #30483b;
+}
+
+.counter {
+  margin-top: 15px;
+  color: #7c8881;
+  font-size: 18px;
+}
+
+.number {
+  color: #5c7768;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+footer {
+  margin-top: 40px;
+  color: #8b958f;
+  font-size: 16px;
+}
+
+@media (max-width: 500px) {
+  .menu {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .menu button {
+    padding: 20px 8px;
+    font-size: 18px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>أثر</h1>
+  <div class="logo">أثر</div>
 
-    <div class="subtitle">
-      اجعل لك ولمن تحب أثرًا طيبًا لا ينقطع 🤍
-    </div>
+  <div class="subtitle">
+    اجعل لك ولمن تحب أثرًا طيبًا لا ينقطع 🤍
+  </div>
 
-    <div class="card">
+  <!-- القائمة الرئيسية -->
 
-      <div id="dhikr">
-        سُبْحَانَ اللهِ وَبِحَمْدِهِ
-      </div>
+  <div class="menu" id="menu">
 
-      <button class="main" onclick="countDhikr()">
-        📿 استغفرتُ الله
-      </button>
+    <button onclick="openSection('tasbeeh')">
+      <span class="icon">📿</span>
+      التسبيح
+    </button>
 
-      <button class="secondary" onclick="changeDhikr()">
-        🔄 ذكر آخر
-      </button>
+    <button onclick="openSection('duaa')">
+      <span class="icon">🤲</span>
+      الأدعية
+    </button>
 
-      <p>عدد التسبيحات: <span id="counter">0</span></p>
+    <button onclick="openSection('morning')">
+      <span class="icon">🌅</span>
+      أذكار الصباح
+    </button>
 
-    </div>
+    <button onclick="openSection('evening')">
+      <span class="icon">🌙</span>
+      أذكار المساء
+    </button>
 
-    <footer>
-      صدقة جارية عن من تحب 🤍
-    </footer>
+    <button onclick="openSection('istighfar')">
+      <span class="icon">🕊️</span>
+      الاستغفار
+    </button>
+
+    <button onclick="openSection('salawat')">
+      <span class="icon">❤️</span>
+      الصلاة على النبي ﷺ
+    </button>
+
+    <button onclick="openSection('quran')">
+      <span class="icon">📖</span>
+      آية اليوم
+    </button>
+
+    <button onclick="openSection('daily')">
+      <span class="icon">✨</span>
+      ذكر اليوم
+    </button>
 
   </div>
 
-  <script>
 
-    let count = 0;
+  <!-- التسبيح -->
 
-    const adhkar = [
-      "سُبْحَانَ اللهِ وَبِحَمْدِهِ",
-      "أَسْتَغْفِرُ اللهَ وَأَتُوبُ إِلَيْهِ",
-      "سُبْحَانَ اللهِ، وَالْحَمْدُ لِلَّهِ",
-      "لَا إِلٰهَ إِلَّا اللهُ",
-      "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",
-      "سُبْحَانَ اللهِ وَالْحَمْدُ لِلَّهِ وَاللهُ أَكْبَرُ"
-    ];
+  <div class="section" id="tasbeeh">
 
-    let current = 0;
+    <h2>📿 التسبيح</h2>
 
-    function countDhikr() {
-      count++;
-      document.getElementById("counter").textContent = count;
-    }
+    <div class="text" id="tasbeehText">
+      سُبْحَانَ اللهِ وَبِحَمْدِهِ
+    </div>
 
-    function changeDhikr() {
-      current++;
+    <button class="action" onclick="increase('tasbeehCounter')">
+      ذكرتُ الله
+    </button>
 
-      if (current >= adhkar.length) {
-        current = 0;
-      }
+    <button class="action" onclick="nextTasbeeh()">
+      ذكر آخر ✨
+    </button>
 
-      document.getElementById("dhikr").textContent = adhkar[current];
-    }
+    <div class="counter">
+      العدد:
+      <span class="number" id="tasbeehCounter">0</span>
+    </div>
 
-  </script>
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- الأدعية -->
+
+  <div class="section" id="duaa">
+
+    <h2>🤲 الأدعية</h2>
+
+    <div class="text" id="duaaText">
+      اللهم إنك عفو تحب العفو فاعفُ عني.
+    </div>
+
+    <button class="action" onclick="nextDuaa()">
+      دعاء آخر 🤲
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- أذكار الصباح -->
+
+  <div class="section" id="morning">
+
+    <h2>🌅 أذكار الصباح</h2>
+
+    <div class="text" id="morningText">
+      أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ.
+    </div>
+
+    <button class="action" onclick="nextMorning()">
+      الذكر التالي
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- أذكار المساء -->
+
+  <div class="section" id="evening">
+
+    <h2>🌙 أذكار المساء</h2>
+
+    <div class="text" id="eveningText">
+      أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ.
+    </div>
+
+    <button class="action" onclick="nextEvening()">
+      الذكر التالي
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- الاستغفار -->
+
+  <div class="section" id="istighfar">
+
+    <h2>🕊️ الاستغفار</h2>
+
+    <div class="text" id="istighfarText">
+      أَسْتَغْفِرُ اللهَ وَأَتُوبُ إِلَيْهِ.
+    </div>
+
+    <button class="action" onclick="increase('istighfarCounter')">
+      أستغفر الله
+    </button>
+
+    <div class="counter">
+      العدد:
+      <span class="number" id="istighfarCounter">0</span>
+    </div>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- الصلاة على النبي -->
+
+  <div class="section" id="salawat">
+
+    <h2>❤️ الصلاة على النبي ﷺ</h2>
+
+    <div class="text">
+      اللهم صل وسلم وبارك على نبينا محمد ﷺ
+    </div>
+
+    <button class="action" onclick="increase('salawatCounter')">
+      صليت على النبي ﷺ
+    </button>
+
+    <div class="counter">
+      العدد:
+      <span class="number" id="salawatCounter">0</span>
+    </div>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- آية اليوم -->
+
+  <div class="section" id="quran">
+
+    <h2>📖 آية اليوم</h2>
+
+    <div class="text" id="quranText">
+      فَإِنَّ مَعَ الْعُسْرِ يُسْرًا
+    </div>
+
+    <div>
+      سورة الشرح — الآية 5
+    </div>
+
+    <button class="action" onclick="nextAyah()">
+      آية أخرى ✨
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- ذكر اليوم -->
+
+  <div class="section" id="daily">
+
+    <h2>✨ ذكر اليوم</h2>
+
+    <div class="text" id="dailyText">
+      لَا إِلَهَ إِلَّا اللهُ.
+    </div>
+
+    <button class="action" onclick="nextDaily()">
+      ذكر آخر
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <footer>
+    الدال على الخير كفاعله 🤍
+    <br>
+    اللهم اجعل هذا العمل صدقة جارية
+  </footer>
+
+</div>
+
+
+<script>
+
+const tasbeeh = [
+  "سُبْحَانَ اللهِ وَبِحَمْدِهِ",
+  "سُبْحَانَ اللهِ الْعَظِيمِ",
+  "الْحَمْدُ لِلَّهِ",
+  "اللهُ أَكْبَرُ",
+  "لَا إِلَهَ إِلَّا اللهُ",
+  "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ"
+];
+
+const duas = [
+  "اللهم إنك عفو تحب العفو فاعفُ عني.",
+  "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي.",
+  "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.",
+  "اللهم اغفر لي وارحمني واهدني وعافني وارزقني.",
+  "رَبِّ زِدْنِي عِلْمًا.",
+  "اللهم ارزقني راحة القلب وطمأنينة النفس."
+];
+
+const morning = [
+  "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ.",
+  "اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور.",
+  "رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.",
+  "اللهم إني أسألك خير هذا اليوم وخيره."
+];
+
+const evening = [
+  "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ.",
+  "اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير.",
+  "رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.",
+  "اللهم إني أسألك خير هذه الليلة وخير ما فيها."
+];
+
+const ayat = [
+  "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
+  "وَقُلْ رَبِّ زِدْنِي عِلْمًا",
+  "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+  "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+  "إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ"
+];
+
+const daily = [
+  "لَا إِلَهَ إِلَّا اللهُ.",
+  "سُبْحَانَ اللهِ وَبِحَمْدِهِ.",
+  "أَسْتَغْفِرُ اللهَ.",
+  "اللهم صل وسلم على نبينا محمد ﷺ.",
+  "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ."
+];
+
+let t = 0;
+let d = 0;
+let m = 0;
+let e = 0;
+let a = 0;
+let dl = 0;
+
+function openSection(id) {
+  document.getElementById("menu").style.display = "none";
+
+  document.querySelectorAll(".section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+}
+
+function goHome() {
+  document.querySelectorAll(".section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document.getElementById("menu").style.display = "grid";
+}
+
+function increase(id) {
+  let element = document.getElementById(id);
+  element.textContent = Number(element.textContent) + 1;
+}
+
+function nextTasbeeh() {
+  t = (t + 1) % tasbeeh.length;
+  document.getElementById("tasbeehText").textContent = tasbeeh[t];
+}
+
+function nextDuaa() {
+  d = (d + 1) % duas.length;
+  document.getElementById("duaaText").textContent = duas[d];
+}
+
+function nextMorning() {
+  m = (m + 1) % morning.length;
+  document.getElementById("morningText").textContent = morning[m];
+}
+
+function nextEvening() {
+  e = (e + 1) % evening.length;
+  document.getElementById("eveningText").textContent = evening[e];
+}
+
+function nextAyah() {
+  a = (a + 1) % ayat.length;
+  document.getElementById("quranText").textContent = ayat[a];
+}
+
+function nextDaily() {
+  dl = (dl + 1) % daily.length;
+  document.getElementById("dailyText").textContent = daily[dl];
+}
+
+</script>
 
 </body>
 </html>
