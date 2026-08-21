@@ -13,8 +13,7 @@
   --bg:#f5f1e7;
   --card:#fffdf8;
   --green:#405448;
-  --green-dark:#304238;
-  --green-soft:#718078;
+  --dark:#304238;
   --gold:#b69b61;
   --gold-soft:#ded2b5;
   --text:#2e3c34;
@@ -23,10 +22,6 @@
 
 * {
   box-sizing:border-box;
-}
-
-html {
-  scroll-behavior:smooth;
 }
 
 body {
@@ -39,35 +34,15 @@ body {
   font-family:"Noto Naskh Arabic",serif;
 }
 
-body::before,
-body::after {
-  content:"✦";
-  position:fixed;
-  color:rgba(182,155,97,.08);
-  font-size:180px;
-  pointer-events:none;
-  z-index:-1;
-}
-
-body::before {
-  top:-75px;
-  right:-65px;
-}
-
-body::after {
-  bottom:-85px;
-  left:-65px;
-}
-
 .container {
   width:min(700px,100%);
   margin:auto;
-  padding:38px 17px 35px;
+  padding:35px 16px;
 }
 
 header {
   text-align:center;
-  padding:10px 0 28px;
+  padding:10px 0 25px;
 }
 
 .logo {
@@ -75,7 +50,7 @@ header {
   font-size:76px;
   line-height:1;
   color:var(--green);
-  font-weight:700;
+  font-weight:bold;
 }
 
 .ornament {
@@ -83,91 +58,54 @@ header {
   align-items:center;
   justify-content:center;
   gap:10px;
-  margin:13px auto 10px;
+  margin:14px auto 10px;
   color:var(--gold);
 }
 
 .ornament span {
-  width:58px;
+  width:60px;
   height:1px;
   background:var(--gold-soft);
 }
 
-.ornament b {
-  font-size:13px;
-  font-weight:normal;
-}
-
 .subtitle {
-  color:var(--green-soft);
+  color:#718078;
   font-size:19px;
   line-height:1.9;
 }
 
-/* بطاقة الصدقة */
-
-.person-card {
-  display:none;
-  text-align:center;
-  padding:25px 18px;
-  margin-bottom:20px;
-  border-radius:27px;
-  background:linear-gradient(145deg,var(--green),var(--green-dark));
-  color:white;
-  box-shadow:0 14px 35px rgba(45,63,53,.14);
-}
-
-.person-small {
-  color:#ddd0ae;
-  font-size:16px;
-}
-
-.person-name {
-  font-family:"Amiri",serif;
-  font-size:32px;
-  margin:4px 0;
-}
-
-.person-dua {
-  font-size:17px;
-  color:rgba(255,255,255,.85);
-}
-
-/* إنشاء أثر */
-
-.create-card {
+.start-card {
   background:var(--card);
   border:1px solid rgba(182,155,97,.22);
-  border-radius:25px;
-  padding:25px 18px;
-  margin-bottom:20px;
+  border-radius:27px;
+  padding:30px 20px;
   text-align:center;
-  box-shadow:0 10px 30px rgba(48,65,55,.06);
+  box-shadow:0 12px 35px rgba(48,65,55,.08);
 }
 
-.create-title {
+.start-title {
   font-family:"Amiri",serif;
   color:var(--green);
-  font-size:27px;
+  font-size:30px;
   margin-bottom:5px;
 }
 
-.create-text {
+.start-text {
   color:var(--muted);
-  font-size:16px;
-  margin-bottom:15px;
+  font-size:17px;
+  margin-bottom:20px;
 }
 
 .name-input {
   width:100%;
-  padding:13px 16px;
   border:1px solid var(--gold-soft);
+  background:#fbf8ef;
   border-radius:14px;
-  background:#fff;
-  color:var(--text);
-  font-family:inherit;
-  font-size:18px;
+  padding:14px;
   text-align:center;
+  font-family:inherit;
+  font-size:19px;
+  color:var(--text);
   outline:none;
 }
 
@@ -175,47 +113,32 @@ header {
   border-color:var(--gold);
 }
 
-.generated-link {
-  display:none;
-  margin-top:15px;
-  padding:12px;
+.action {
+  border:none;
+  background:var(--green);
+  color:white;
+  padding:12px 23px;
+  margin:12px 5px 5px;
   border-radius:13px;
-  background:#f5f1e7;
-  color:var(--green);
-  font-size:14px;
-  word-break:break-all;
+  font-family:inherit;
+  font-size:18px;
+  cursor:pointer;
 }
 
-/* ذكر اليوم */
+.action:hover {
+  background:var(--dark);
+}
 
 .daily-card {
   position:relative;
   overflow:hidden;
   text-align:center;
-  padding:29px 22px 26px;
-  margin-bottom:20px;
+  padding:29px 22px;
+  margin-bottom:18px;
   border-radius:27px;
-  background:linear-gradient(145deg,var(--green),var(--green-dark));
+  background:linear-gradient(145deg,var(--green),var(--dark));
   color:white;
   box-shadow:0 14px 35px rgba(45,63,53,.14);
-}
-
-.daily-card::before,
-.daily-card::after {
-  content:"✦";
-  position:absolute;
-  color:rgba(255,255,255,.09);
-  font-size:90px;
-}
-
-.daily-card::before {
-  top:-35px;
-  right:-15px;
-}
-
-.daily-card::after {
-  bottom:-45px;
-  left:-15px;
 }
 
 .daily-label {
@@ -225,14 +148,15 @@ header {
 
 .daily-title {
   font-family:"Amiri",serif;
-  font-size:26px;
+  font-size:25px;
+  margin-top:5px;
 }
 
 .daily-text {
   font-family:"Amiri",serif;
   font-size:28px;
   line-height:1.9;
-  margin:8px 0 18px;
+  margin:10px 0 18px;
 }
 
 .daily-button {
@@ -240,36 +164,44 @@ header {
   background:transparent;
   color:white;
   border-radius:12px;
-  padding:8px 21px;
+  padding:8px 20px;
   font-family:inherit;
   font-size:16px;
-  cursor:pointer;
 }
 
-/* القائمة */
+.person {
+  text-align:center;
+  margin:5px 0 18px;
+}
+
+.person-small {
+  color:var(--muted);
+  font-size:16px;
+}
+
+.person-name {
+  font-family:"Amiri",serif;
+  color:var(--green);
+  font-size:32px;
+  font-weight:bold;
+}
 
 .menu {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:13px;
+  gap:12px;
 }
 
 .menu button {
-  min-height:124px;
+  min-height:120px;
   border:1px solid rgba(182,155,97,.20);
   border-radius:22px;
-  background:rgba(255,253,248,.94);
+  background:rgba(255,253,248,.95);
   color:var(--text);
   font-family:inherit;
-  font-size:20px;
+  font-size:19px;
   cursor:pointer;
   box-shadow:0 8px 25px rgba(48,65,55,.055);
-  transition:.22s;
-}
-
-.menu button:hover {
-  transform:translateY(-3px);
-  box-shadow:0 13px 30px rgba(48,65,55,.09);
 }
 
 .icon {
@@ -286,40 +218,25 @@ header {
   font-size:19px;
 }
 
-/* الأقسام */
-
 .section {
   display:none;
   background:var(--card);
   border:1px solid rgba(182,155,97,.20);
   border-radius:27px;
-  padding:32px 20px;
+  padding:30px 18px;
   text-align:center;
   box-shadow:0 12px 35px rgba(48,65,55,.075);
-  animation:show .35s ease;
 }
 
 .section.active {
   display:block;
 }
 
-@keyframes show {
-  from {
-    opacity:0;
-    transform:translateY(10px);
-  }
-
-  to {
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
 .section h2 {
   margin:0;
   font-family:"Amiri",serif;
   color:var(--green);
-  font-size:32px;
+  font-size:31px;
 }
 
 .line {
@@ -331,22 +248,15 @@ header {
 
 .text {
   font-family:"Amiri",serif;
-  font-size:29px;
-  line-height:2.1;
-  margin:25px 5px;
+  font-size:28px;
+  line-height:2;
+  margin:20px 5px;
 }
-
-.source {
-  color:var(--muted);
-  font-size:16px;
-}
-
-/* العداد */
 
 .counter-circle {
   width:165px;
   height:165px;
-  margin:24px auto;
+  margin:23px auto;
   border-radius:50%;
   border:1px solid var(--gold-soft);
   background:#fbf8ef;
@@ -354,22 +264,20 @@ header {
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  box-shadow:
-    inset 0 0 0 8px rgba(182,155,97,.055),
-    0 8px 25px rgba(48,65,55,.06);
   cursor:pointer;
   user-select:none;
-  transition:transform .12s ease;
+  transition:.12s;
 }
 
 .counter-circle:active {
-  transform:scale(.94);
+  transform:scale(.93);
 }
 
 .counter-number {
   font-family:"Amiri",serif;
   color:var(--gold);
   font-size:48px;
+  line-height:1;
 }
 
 .counter-label {
@@ -378,26 +286,10 @@ header {
   margin-top:8px;
 }
 
-/* الأزرار */
-
-.action {
-  border:none;
-  background:var(--green);
-  color:white;
-  padding:11px 23px;
-  margin:5px;
-  border-radius:13px;
-  font-family:inherit;
-  font-size:18px;
-  cursor:pointer;
-}
-
 .back {
   background:#eee9dc;
   color:var(--green);
 }
-
-/* المشاركة */
 
 .share-card {
   margin-top:18px;
@@ -417,57 +309,28 @@ header {
 .share-text {
   color:var(--muted);
   font-size:15px;
-  margin-bottom:13px;
 }
-
-/* الفوتر */
 
 footer {
   text-align:center;
-  margin-top:38px;
+  margin-top:35px;
   color:var(--muted);
   font-size:16px;
   line-height:2;
 }
 
-.footer-symbol {
-  color:var(--gold);
-  margin:0 6px;
-}
-
 @media(max-width:520px) {
-
-  .container {
-    padding:30px 14px;
-  }
-
   .logo {
     font-size:64px;
   }
 
-  .subtitle {
-    font-size:18px;
-  }
-
-  .menu {
-    gap:10px;
-  }
-
   .menu button {
-    min-height:112px;
+    min-height:110px;
     font-size:18px;
   }
 
   .text {
     font-size:26px;
-  }
-
-  .daily-text {
-    font-size:26px;
-  }
-
-  .section {
-    padding:28px 15px;
   }
 }
 </style>
@@ -494,38 +357,21 @@ footer {
 </header>
 
 
-<!-- صدقة جارية عن شخص -->
+<!-- البداية -->
 
-<div class="person-card" id="personCard">
+<div id="start" class="start-card">
 
-  <div class="person-small">
-    صدقة جارية عن
+  <div class="start-title">
+    صدقة جارية عن شخص تحبه
   </div>
 
-  <div class="person-name" id="personName"></div>
-
-  <div class="person-dua">
-    اللهم اجعل هذا العمل صدقة جارية عنه، واغفر له وارحمه
-  </div>
-
-</div>
-
-
-<!-- إنشاء أثر -->
-
-<div class="create-card">
-
-  <div class="create-title">
-    إنشاء صدقة جارية
-  </div>
-
-  <div class="create-text">
-    اكتب اسم من تحب وشارك أثرًا طيبًا باسمه
+  <div class="start-text">
+    اكتب اسم الشخص الذي تريد أن تهب له هذا الأجر
   </div>
 
   <input
-    class="name-input"
     id="nameInput"
+    class="name-input"
     type="text"
     placeholder="اكتب الاسم هنا"
     maxlength="40"
@@ -533,421 +379,400 @@ footer {
 
   <br>
 
-  <button class="action" onclick="createLink()">
-    إنشاء الأثر
-  </button>
-
-  <div class="generated-link" id="generatedLink"></div>
-
-</div>
-
-
-<!-- ذكر اليوم -->
-
-<div class="daily-card">
-
-  <div class="daily-label">
-    ذِكر اليوم
-  </div>
-
-  <div class="daily-title">
-    ألا بذكر الله تطمئن القلوب
-  </div>
-
-  <div class="daily-text" id="dailyText">
-    لَا إِلَهَ إِلَّا اللهُ
-  </div>
-
-  <button class="daily-button" onclick="nextDaily()">
-    ذكر آخر
+  <button class="action" onclick="createPage()">
+    إنشاء صفحة الصدقة
   </button>
 
 </div>
 
 
-<!-- القائمة -->
+<!-- الموقع -->
 
-<div class="menu" id="menu">
+<div id="site" style="display:none;">
 
-  <button onclick="openSection('tasbeeh')">
-    <span class="icon">ذ</span>
-    التسبيح
-  </button>
+  <div class="person">
 
-  <button onclick="openSection('duaa')">
-    <span class="icon">د</span>
-    الأدعية
-  </button>
-
-  <button onclick="openSection('morning')">
-    <span class="icon">ص</span>
-    أذكار الصباح
-  </button>
-
-  <button onclick="openSection('evening')">
-    <span class="icon">م</span>
-    أذكار المساء
-  </button>
-
-  <button onclick="openSection('sleep')">
-    <span class="icon">ن</span>
-    أذكار النوم
-  </button>
-
-  <button onclick="openSection('wake')">
-    <span class="icon">ي</span>
-    أذكار الاستيقاظ
-  </button>
-
-  <button onclick="openSection('istighfar')">
-    <span class="icon">غ</span>
-    الاستغفار
-  </button>
-
-  <button onclick="openSection('salawat')">
-    <span class="icon">ﷺ</span>
-    الصلاة على النبي
-  </button>
-
-  <button onclick="openSection('quran')">
-    <span class="icon">ق</span>
-    آية اليوم
-  </button>
-
-  <button onclick="openSection('daily')">
-    <span class="icon">ذ</span>
-    الأذكار
-  </button>
-
-</div>
-
-
-<!-- التسبيح -->
-
-<div class="section" id="tasbeeh">
-
-  <h2>التسبيح</h2>
-  <div class="line"></div>
-
-  <div class="text" id="tasbeehText">
-    سُبْحَانَ اللهِ وَبِحَمْدِهِ
-  </div>
-
-  <div
-    class="counter-circle"
-    onclick="countTasbeeh()"
-    id="tasbeehButton"
-  >
-
-    <div class="counter-number" id="tasbeehCounter">
-      0
+    <div class="person-small">
+      صدقة جارية عن روح
     </div>
 
-    <div class="counter-label">
-      اضغط للذكر
+    <div class="person-name" id="personName"></div>
+
+  </div>
+
+
+  <div class="daily-card">
+
+    <div class="daily-label">
+      ذكر اليوم
     </div>
 
-  </div>
-
-  <button class="action" onclick="nextTasbeeh()">
-    ذكر آخر
-  </button>
-
-  <button class="action back" onclick="resetCounter()">
-    إعادة العداد
-  </button>
-
-  <br>
-
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
-
-</div>
-
-
-<!-- الأدعية -->
-
-<div class="section" id="duaa">
-
-  <h2>الأدعية</h2>
-  <div class="line"></div>
-
-  <div class="text" id="duaaText">
-    اللهم إنك عفو تحب العفو فاعفُ عني.
-  </div>
-
-  <button class="action" onclick="nextDuaa()">
-    دعاء آخر
-  </button>
-
-  <br>
-
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
-
-</div>
-
-
-<!-- الصباح -->
-
-<div class="section" id="morning">
-
-  <h2>أذكار الصباح</h2>
-  <div class="line"></div>
-
-  <div class="text" id="morningText">
-    أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ.
-  </div>
-
-  <button class="action" onclick="nextMorning()">
-    الذكر التالي
-  </button>
-
-  <br>
-
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
-
-</div>
-
-
-<!-- المساء -->
-
-<div class="section" id="evening">
-
-  <h2>أذكار المساء</h2>
-  <div class="line"></div>
-
-  <div class="text" id="eveningText">
-    أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ.
-  </div>
-
-  <button class="action" onclick="nextEvening()">
-    الذكر التالي
-  </button>
-
-  <br>
-
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
-
-</div>
-
-
-<!-- النوم -->
-
-<div class="section" id="sleep">
-
-  <h2>أذكار النوم</h2>
-  <div class="line"></div>
-
-  <div class="text" id="sleepText">
-    بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا.
-  </div>
-
-  <button class="action" onclick="nextSleep()">
-    الذكر التالي
-  </button>
-
-  <br>
-
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
-
-</div>
-
-
-<!-- الاستيقاظ -->
-
-<div class="section" id="wake">
-
-  <h2>أذكار الاستيقاظ</h2>
-  <div class="line"></div>
-
-  <div class="text" id="wakeText">
-    الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ.
-  </div>
-
-  <button class="action" onclick="nextWake()">
-    الذكر التالي
-  </button>
-
-  <br>
-
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
-
-</div>
-
-
-<!-- الاستغفار -->
-
-<div class="section" id="istighfar">
-
-  <h2>الاستغفار</h2>
-  <div class="line"></div>
-
-  <div class="text">
-    أَسْتَغْفِرُ اللهَ وَأَتُوبُ إِلَيْهِ.
-  </div>
-
-  <div
-    class="counter-circle"
-    onclick="countSimple('istighfarCounter')"
-  >
-
-    <div class="counter-number" id="istighfarCounter">
-      0
+    <div class="daily-title">
+      ألا بذكر الله تطمئن القلوب
     </div>
 
-    <div class="counter-label">
-      اضغط للذكر
+    <div class="daily-text" id="dailyText">
+      لَا إِلَهَ إِلَّا اللهُ
     </div>
 
+    <button class="daily-button" onclick="nextDaily()">
+      ذكر آخر
+    </button>
+
   </div>
 
-  <button
-    class="action back"
-    onclick="resetSimple('istighfarCounter')"
-  >
-    إعادة العداد
-  </button>
 
-  <br>
+  <div class="menu" id="menu">
 
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
+    <button onclick="openSection('tasbeeh')">
+      <span class="icon">ذ</span>
+      التسبيح
+    </button>
 
-</div>
+    <button onclick="openSection('duaa')">
+      <span class="icon">د</span>
+      الأدعية
+    </button>
 
+    <button onclick="openSection('morning')">
+      <span class="icon">ص</span>
+      أذكار الصباح
+    </button>
 
-<!-- الصلاة على النبي -->
+    <button onclick="openSection('evening')">
+      <span class="icon">م</span>
+      أذكار المساء
+    </button>
 
-<div class="section" id="salawat">
+    <button onclick="openSection('sleep')">
+      <span class="icon">ن</span>
+      أذكار النوم
+    </button>
 
-  <h2>الصلاة على النبي ﷺ</h2>
-  <div class="line"></div>
+    <button onclick="openSection('wake')">
+      <span class="icon">ي</span>
+      أذكار الاستيقاظ
+    </button>
 
-  <div class="text">
-    اللهم صل وسلم وبارك على نبينا محمد ﷺ
+    <button onclick="openSection('istighfar')">
+      <span class="icon">غ</span>
+      الاستغفار
+    </button>
+
+    <button onclick="openSection('salawat')">
+      <span class="icon">ﷺ</span>
+      الصلاة على النبي
+    </button>
+
+    <button onclick="openSection('quran')">
+      <span class="icon">ق</span>
+      آية اليوم
+    </button>
+
+    <button onclick="openSection('daily')">
+      <span class="icon">ذ</span>
+      الأذكار
+    </button>
+
   </div>
 
-  <div
-    class="counter-circle"
-    onclick="countSimple('salawatCounter')"
-  >
 
-    <div class="counter-number" id="salawatCounter">
-      0
+  <!-- التسبيح -->
+
+  <div class="section" id="tasbeeh">
+
+    <h2>التسبيح</h2>
+    <div class="line"></div>
+
+    <div class="text" id="tasbeehText">
+      سُبْحَانَ اللهِ وَبِحَمْدِهِ
     </div>
 
-    <div class="counter-label">
-      اضغط
+    <div class="counter-circle" onclick="count('tasbeehCounter')">
+
+      <div class="counter-number" id="tasbeehCounter">
+        0
+      </div>
+
+      <div class="counter-label">
+        اضغط للذكر
+      </div>
+
     </div>
 
+    <button class="action" onclick="nextTasbeeh()">
+      ذكر آخر
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
   </div>
 
-  <button
-    class="action back"
-    onclick="resetSimple('salawatCounter')"
-  >
-    إعادة العداد
-  </button>
 
-  <br>
+  <!-- الأدعية -->
 
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
+  <div class="section" id="duaa">
 
-</div>
+    <h2>الأدعية</h2>
+    <div class="line"></div>
 
+    <div class="text" id="duaaText">
+      اللهم إنك عفو تحب العفو فاعفُ عني.
+    </div>
 
-<!-- القرآن -->
+    <button class="action" onclick="nextDuaa()">
+      دعاء آخر
+    </button>
 
-<div class="section" id="quran">
+    <br>
 
-  <h2>آية اليوم</h2>
-  <div class="line"></div>
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
 
-  <div class="text" id="quranText">
-    فَإِنَّ مَعَ الْعُسْرِ يُسْرًا
   </div>
 
-  <div class="source" id="quranSource">
-    سورة الشرح — الآية 5
+
+  <!-- الصباح -->
+
+  <div class="section" id="morning">
+
+    <h2>أذكار الصباح</h2>
+    <div class="line"></div>
+
+    <div class="text" id="morningText">
+      أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ.
+    </div>
+
+    <button class="action" onclick="nextMorning()">
+      الذكر التالي
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
   </div>
 
-  <br>
 
-  <button class="action" onclick="nextAyah()">
-    آية أخرى
-  </button>
+  <!-- المساء -->
 
-  <br>
+  <div class="section" id="evening">
 
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
+    <h2>أذكار المساء</h2>
+    <div class="line"></div>
 
-</div>
+    <div class="text" id="eveningText">
+      أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ.
+    </div>
 
+    <button class="action" onclick="nextEvening()">
+      الذكر التالي
+    </button>
 
-<!-- الأذكار -->
+    <br>
 
-<div class="section" id="daily">
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
 
-  <h2>الأذكار</h2>
-  <div class="line"></div>
-
-  <div class="text" id="dailySectionText">
-    لَا إِلَهَ إِلَّا اللهُ
   </div>
 
-  <button class="action" onclick="nextDailySection()">
-    ذكر آخر
-  </button>
 
-  <br>
+  <!-- النوم -->
 
-  <button class="action back" onclick="goHome()">
-    العودة للرئيسية
-  </button>
+  <div class="section" id="sleep">
 
-</div>
+    <h2>أذكار النوم</h2>
+    <div class="line"></div>
 
+    <div class="text" id="sleepText">
+      بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا.
+    </div>
 
-<!-- مشاركة -->
+    <button class="action" onclick="nextSleep()">
+      الذكر التالي
+    </button>
 
-<div class="share-card">
+    <br>
 
-  <div class="share-title">
-    شارك الأجر
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
   </div>
 
-  <div class="share-text">
-    لعل شخصًا يذكر الله بسببك
+
+  <!-- الاستيقاظ -->
+
+  <div class="section" id="wake">
+
+    <h2>أذكار الاستيقاظ</h2>
+    <div class="line"></div>
+
+    <div class="text" id="wakeText">
+      الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ.
+    </div>
+
+    <button class="action" onclick="nextWake()">
+      الذكر التالي
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
   </div>
 
-  <button class="action" onclick="shareSite()">
-    مشاركة أثر
-  </button>
+
+  <!-- الاستغفار -->
+
+  <div class="section" id="istighfar">
+
+    <h2>الاستغفار</h2>
+    <div class="line"></div>
+
+    <div class="text">
+      أَسْتَغْفِرُ اللهَ وَأَتُوبُ إِلَيْهِ.
+    </div>
+
+    <div class="counter-circle" onclick="count('istighfarCounter')">
+
+      <div class="counter-number" id="istighfarCounter">
+        0
+      </div>
+
+      <div class="counter-label">
+        اضغط للذكر
+      </div>
+
+    </div>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- الصلاة على النبي -->
+
+  <div class="section" id="salawat">
+
+    <h2>الصلاة على النبي ﷺ</h2>
+    <div class="line"></div>
+
+    <div class="text">
+      اللهم صل وسلم وبارك على نبينا محمد ﷺ
+    </div>
+
+    <div class="counter-circle" onclick="count('salawatCounter')">
+
+      <div class="counter-number" id="salawatCounter">
+        0
+      </div>
+
+      <div class="counter-label">
+        اضغط
+      </div>
+
+    </div>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- القرآن -->
+
+  <div class="section" id="quran">
+
+    <h2>آية اليوم</h2>
+    <div class="line"></div>
+
+    <div class="text" id="quranText">
+      فَإِنَّ مَعَ الْعُسْرِ يُسْرًا
+    </div>
+
+    <div id="quranSource" class="person-small">
+      سورة الشرح — الآية 5
+    </div>
+
+    <button class="action" onclick="nextAyah()">
+      آية أخرى
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- الأذكار -->
+
+  <div class="section" id="daily">
+
+    <h2>الأذكار</h2>
+    <div class="line"></div>
+
+    <div class="text" id="dailySectionText">
+      لَا إِلَهَ إِلَّا اللهُ
+    </div>
+
+    <button class="action" onclick="nextDailySection()">
+      ذكر آخر
+    </button>
+
+    <br>
+
+    <button class="action back" onclick="goHome()">
+      العودة للرئيسية
+    </button>
+
+  </div>
+
+
+  <!-- مشاركة -->
+
+  <div class="share-card">
+
+    <div class="share-title">
+      شارك الأجر
+    </div>
+
+    <div class="share-text">
+      لعل شخصًا يذكر الله بسببك
+    </div>
+
+    <button class="action" onclick="shareSite()">
+      مشاركة أثر
+    </button>
+
+  </div>
 
 </div>
 
 
 <footer>
 
-  <span class="footer-symbol">✦</span>
-  الدال على الخير كفاعله
-  <span class="footer-symbol">✦</span>
+  ✦ الدال على الخير كفاعله ✦
 
   <br>
 
@@ -961,68 +786,68 @@ footer {
 <script>
 
 const tasbeeh = [
-  "سُبْحَانَ اللهِ وَبِحَمْدِهِ",
-  "سُبْحَانَ اللهِ الْعَظِيمِ",
-  "الْحَمْدُ لِلَّهِ",
-  "اللهُ أَكْبَرُ",
-  "لَا إِلَهَ إِلَّا اللهُ",
-  "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ"
+"سُبْحَانَ اللهِ وَبِحَمْدِهِ",
+"سُبْحَانَ اللهِ الْعَظِيمِ",
+"الْحَمْدُ لِلَّهِ",
+"اللهُ أَكْبَرُ",
+"لَا إِلَهَ إِلَّا اللهُ",
+"لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ"
 ];
 
 const duas = [
-  "اللهم إنك عفو تحب العفو فاعفُ عني.",
-  "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي.",
-  "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.",
-  "رَبِّ زِدْنِي عِلْمًا.",
-  "اللهم اغفر لي وارحمني واهدني وعافني وارزقني."
+"اللهم إنك عفو تحب العفو فاعفُ عني.",
+"رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي.",
+"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.",
+"رَبِّ زِدْنِي عِلْمًا.",
+"اللهم اغفر لي وارحمني واهدني وعافني وارزقني."
 ];
 
 const morning = [
-  "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ.",
-  "اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور.",
-  "رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا."
+"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ.",
+"اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور.",
+"رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا."
 ];
 
 const evening = [
-  "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ.",
-  "اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير.",
-  "رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا."
+"أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ.",
+"اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير.",
+"رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا."
 ];
 
 const sleep = [
-  "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا.",
-  "اللهم قني عذابك يوم تبعث عبادك."
+"بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا.",
+"اللهم قني عذابك يوم تبعث عبادك."
 ];
 
 const wake = [
-  "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ."
+"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ."
 ];
 
 const ayat = [
-  {
-    text:"فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
-    source:"سورة الشرح — الآية 5"
-  },
-  {
-    text:"وَقُلْ رَبِّ زِدْنِي عِلْمًا",
-    source:"سورة طه — الآية 114"
-  },
-  {
-    text:"إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
-    source:"سورة الأنفال — الآية 46"
-  },
-  {
-    text:"وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
-    source:"سورة الطلاق — الآية 3"
-  }
+{
+text:"فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
+source:"سورة الشرح — الآية 5"
+},
+{
+text:"وَقُلْ رَبِّ زِدْنِي عِلْمًا",
+source:"سورة طه — الآية 114"
+},
+{
+text:"إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+source:"سورة الأنفال — الآية 46"
+},
+{
+text:"وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+source:"سورة الطلاق — الآية 3"
+}
 ];
 
 const daily = [
-  "لَا إِلَهَ إِلَّا اللهُ",
-  "سُبْحَانَ اللهِ وَبِحَمْدِهِ",
-  "أَسْتَغْفِرُ اللهَ",
-  "اللهم صل وسلم على نبينا محمد ﷺ",
-  "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ"
+"لَا إِلَهَ إِلَّا اللهُ",
+"سُبْحَانَ اللهِ وَبِحَمْدِهِ",
+"أَسْتَغْفِرُ اللهَ",
+"اللهم صل وسلم على نبينا محمد ﷺ",
+"الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ"
 ];
 
 let t=0;
@@ -1035,9 +860,9 @@ let a=0;
 let dl=0;
 
 
-/* إنشاء الرابط */
+/* إنشاء الصفحة */
 
-function createLink() {
+function createPage() {
 
   const input =
     document.getElementById("nameInput");
@@ -1045,39 +870,35 @@ function createLink() {
   const name =
     input.value.trim();
 
-  if (!name) {
-    alert("اكتب اسم الشخص أولًا");
+  if(!name) {
+    alert("اكتب اسم الشخص أولًا 🤍");
     return;
   }
 
-  const url =
+  document.getElementById("personName").textContent =
+    name;
+
+  document.getElementById("start").style.display =
+    "none";
+
+  document.getElementById("site").style.display =
+    "block";
+
+  const newUrl =
     window.location.origin +
     window.location.pathname +
     "?name=" +
     encodeURIComponent(name);
 
-  const box =
-    document.getElementById("generatedLink");
+  window.history.replaceState({}, "", newUrl);
 
-  box.style.display = "block";
-
-  box.textContent =
-    "رابط الأثر: " + url;
-
-  navigator.clipboard
-    .writeText(url)
-    .then(() => {
-      alert("تم إنشاء الرابط ونسخه 🤍");
-    })
-    .catch(() => {
-      alert("تم إنشاء الرابط. يمكنك نسخه من المربع.");
-    });
+  window.scrollTo(0,0);
 }
 
 
-/* قراءة الاسم من الرابط */
+/* فتح الصفحة مباشرة من الرابط */
 
-function loadPerson() {
+function loadName() {
 
   const params =
     new URLSearchParams(window.location.search);
@@ -1085,21 +906,17 @@ function loadPerson() {
   const name =
     params.get("name");
 
-  if (!name) {
-    return;
+  if(name) {
+
+    document.getElementById("personName").textContent =
+      name;
+
+    document.getElementById("start").style.display =
+      "none";
+
+    document.getElementById("site").style.display =
+      "block";
   }
-
-  const decodedName =
-    decodeURIComponent(name);
-
-  document.getElementById("personName")
-    .textContent = decodedName;
-
-  document.getElementById("personCard")
-    .style.display = "block";
-
-  document.getElementById("nameInput")
-    .value = decodedName;
 }
 
 
@@ -1107,28 +924,20 @@ function loadPerson() {
 
 function openSection(id) {
 
-  document.getElementById("menu")
-    .style.display = "none";
+  document.getElementById("menu").style.display =
+    "none";
 
-  document.querySelector(".daily-card")
-    .style.display = "none";
+  document.querySelector(".daily-card").style.display =
+    "none";
 
-  document.querySelector(".create-card")
-    .style.display = "none";
+  document.querySelector(".share-card").style.display =
+    "none";
 
-  document.querySelector(".person-card")
-    .style.display = "none";
+  document.querySelectorAll(".section").forEach(section=>{
+    section.classList.remove("active");
+  });
 
-  document.querySelector(".share-card")
-    .style.display = "none";
-
-  document.querySelectorAll(".section")
-    .forEach(section => {
-      section.classList.remove("active");
-    });
-
-  document.getElementById(id)
-    .classList.add("active");
+  document.getElementById(id).classList.add("active");
 
   window.scrollTo(0,0);
 }
@@ -1136,109 +945,40 @@ function openSection(id) {
 
 function goHome() {
 
-  document.querySelectorAll(".section")
-    .forEach(section => {
-      section.classList.remove("active");
-    });
+  document.querySelectorAll(".section").forEach(section=>{
+    section.classList.remove("active");
+  });
 
-  document.getElementById("menu")
-    .style.display = "grid";
+  document.getElementById("menu").style.display =
+    "grid";
 
-  document.querySelector(".daily-card")
-    .style.display = "block";
+  document.querySelector(".daily-card").style.display =
+    "block";
 
-  document.querySelector(".create-card")
-    .style.display = "block";
-
-  document.querySelector(".share-card")
-    .style.display = "block";
-
-  loadPerson();
+  document.querySelector(".share-card").style.display =
+    "block";
 
   window.scrollTo(0,0);
 }
 
 
-/* الاهتزاز */
+/* العداد */
 
-function vibrate() {
+function count(id) {
 
-  if ("vibrate" in navigator) {
+  let number =
+    Number(localStorage.getItem(id) || 0);
+
+  number++;
+
+  localStorage.setItem(id,number);
+
+  document.getElementById(id).textContent =
+    number;
+
+  if("vibrate" in navigator) {
     navigator.vibrate(12);
   }
-}
-
-
-/* التسبيح */
-
-function countTasbeeh() {
-
-  let counter =
-    Number(
-      localStorage.getItem("atharTasbeeh") || 0
-    );
-
-  counter++;
-
-  localStorage.setItem(
-    "atharTasbeeh",
-    counter
-  );
-
-  document.getElementById(
-    "tasbeehCounter"
-  ).textContent = counter;
-
-  vibrate();
-}
-
-
-function resetCounter() {
-
-  localStorage.setItem(
-    "atharTasbeeh",
-    0
-  );
-
-  document.getElementById(
-    "tasbeehCounter"
-  ).textContent = 0;
-
-  vibrate();
-}
-
-
-/* العدادات */
-
-function countSimple(id) {
-
-  let counter =
-    Number(
-      localStorage.getItem(id) || 0
-    );
-
-  counter++;
-
-  localStorage.setItem(
-    id,
-    counter
-  );
-
-  document.getElementById(id)
-    .textContent = counter;
-
-  vibrate();
-}
-
-
-function resetSimple(id) {
-
-  localStorage.setItem(id,0);
-
-  document.getElementById(id)
-    .textContent = 0;
-
-  vibrate();
 }
 
 
@@ -1248,170 +988,118 @@ function nextTasbeeh() {
 
   t=(t+1)%tasbeeh.length;
 
-  document.getElementById(
-    "tasbeehText"
-  ).textContent=tasbeeh[t];
+  document.getElementById("tasbeehText").textContent =
+    tasbeeh[t];
 }
-
 
 function nextDuaa() {
 
   d=(d+1)%duas.length;
 
-  document.getElementById(
-    "duaaText"
-  ).textContent=duas[d];
+  document.getElementById("duaaText").textContent =
+    duas[d];
 }
-
 
 function nextMorning() {
 
   m=(m+1)%morning.length;
 
-  document.getElementById(
-    "morningText"
-  ).textContent=morning[m];
+  document.getElementById("morningText").textContent =
+    morning[m];
 }
-
 
 function nextEvening() {
 
   e=(e+1)%evening.length;
 
-  document.getElementById(
-    "eveningText"
-  ).textContent=evening[e];
+  document.getElementById("eveningText").textContent =
+    evening[e];
 }
-
 
 function nextSleep() {
 
   s=(s+1)%sleep.length;
 
-  document.getElementById(
-    "sleepText"
-  ).textContent=sleep[s];
+  document.getElementById("sleepText").textContent =
+    sleep[s];
 }
-
 
 function nextWake() {
 
   w=(w+1)%wake.length;
 
-  document.getElementById(
-    "wakeText"
-  ).textContent=wake[w];
+  document.getElementById("wakeText").textContent =
+    wake[w];
 }
-
 
 function nextAyah() {
 
   a=(a+1)%ayat.length;
 
-  document.getElementById(
-    "quranText"
-  ).textContent=ayat[a].text;
+  document.getElementById("quranText").textContent =
+    ayat[a].text;
 
-  document.getElementById(
-    "quranSource"
-  ).textContent=ayat[a].source;
+  document.getElementById("quranSource").textContent =
+    ayat[a].source;
 }
-
 
 function nextDaily() {
 
   dl=(dl+1)%daily.length;
 
-  document.getElementById(
-    "dailyText"
-  ).textContent=daily[dl];
+  document.getElementById("dailyText").textContent =
+    daily[dl];
 }
-
 
 function nextDailySection() {
 
   dl=(dl+1)%daily.length;
 
-  document.getElementById(
-    "dailySectionText"
-  ).textContent=daily[dl];
+  document.getElementById("dailySectionText").textContent =
+    daily[dl];
 }
 
 
-/* مشاركة */
+/* المشاركة */
 
 async function shareSite() {
 
-  const shareData={
+  const data={
     title:"أثر | صدقة جارية",
-    text:"اجعل لك ولمن تحب أثرًا طيبًا لا ينقطع",
+    text:"صدقة جارية عن روح " +
+      document.getElementById("personName").textContent +
+      " 🤍",
     url:window.location.href
   };
 
-  if(navigator.share){
+  if(navigator.share) {
 
-    try{
-      await navigator.share(shareData);
-    }catch(error){}
+    try {
+      await navigator.share(data);
+    } catch(e) {}
 
-  }else{
+  } else {
 
-    try{
+    try {
 
       await navigator.clipboard.writeText(
         window.location.href
       );
 
-      alert("تم نسخ رابط الموقع");
+      alert("تم نسخ رابط الصفحة 🤍");
 
-    }catch(error){
+    } catch(e) {
 
-      alert(
-        "يمكنك نسخ رابط الموقع ومشاركته مع من تحب."
-      );
+      alert("انسخ رابط الصفحة من المتصفح وشاركه.");
 
     }
   }
 }
 
 
-/* تحميل العداد */
-
-function loadCounter() {
-
-  const counter =
-    Number(
-      localStorage.getItem("atharTasbeeh") || 0
-    );
-
-  document.getElementById(
-    "tasbeehCounter"
-  ).textContent=counter;
-
-  document.getElementById(
-    "istighfarCounter"
-  ).textContent =
-    Number(
-      localStorage.getItem(
-        "istighfarCounter"
-      ) || 0
-    );
-
-  document.getElementById(
-    "salawatCounter"
-  ).textContent =
-    Number(
-      localStorage.getItem(
-        "salawatCounter"
-      ) || 0
-    );
-}
-
-
 /* تشغيل */
 
-loadCounter();
-loadPerson();
+loadName();
 
 </script>
 
